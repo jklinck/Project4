@@ -1,0 +1,102 @@
+Profile class
+
+String name
+int age
+List friends
+boolean status
+
+Profile(String name, int age, boolean status){
+     this.name = name
+     this.age = age
+     this.status = false
+     this.friends = null
+
+}
+
+void setName(String name)
+
+void addFriend(Profile friend)   this will be calling the addProfile method from ProfileManager addProfile method
+                    this also be calling the connectFriends method from ProfileManager
+
+void displayProfile
+           displays name, age, status, friends names
+
+void setStatus
+      use if and if else, no else
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+
+ProfileManager class
+
+UndirectedGraph friendsList
+
+addProfile(Profile user)
+          (adds a profile to the graph, this is not creating a new profile, it is just adding it to the graph)
+
+connectFriends(Profile user1, Profile user2)
+              (this will call the addEdge method from UndirectedGraph, this method is from the
+               BasicGraphInterface)
+
+void displayAllProfiles()
+           sent a message to Eric to clarify if we need to display only friends names or all of their
+           profile information
+
+void removeProfile(Profile user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
