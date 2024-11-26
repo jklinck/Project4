@@ -36,6 +36,7 @@ public class Profile {
         this.name = name;
     }
 
+    // calls addProfile and connectFriends from ProfileManager
     void addFriends(Profile friend){
 
     }
