@@ -28,9 +28,9 @@ public class Profile {
         return this.status;
     }
 
-//    public List getFriends(){
-//
-//    }
+    public List getFriends(){
+        return this.friends;
+    }
 
     void setName(String name){
         this.name = name;
