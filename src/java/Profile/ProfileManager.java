@@ -5,23 +5,38 @@ import GraphPackage.UndirectedGraph;
 public class ProfileManager {
 
    private UndirectedGraph<Profile> friendsList;
-   private Profile root;
+   private Profile firstProfile;
    /*
-   I created a root Profile so the displayAllProfiles below would
+   I created a Profile firstProfile so the displayAllProfiles below would
    have a starting point, in the deleteProfile method we need to
    account for the edge case where the Profile we are deleting is the
-   current root, if so we need to assign any other random node to root
+   current firstProfile, if so we need to assign firstProfile to one of
+   the current firstProfile's friends
     */
 
     public ProfileManager(){
-      this.friendsList = new UndirectedGraph<>();
-      this.root = null;
+      this.friendsList = null;
+      this.firstProfile = null;
     }
 
-    // add a profile to the graph, doesn't create a new profile, just adds a profile to the graph
+    public void nullCheck(){
+        if(friendsList == null){
+            System.out.println("friendsList is null");
+        }
+        else{
+            System.out.println("friendsList is NOT null");
+        }
+    }
+
+    /* add a profile to the graph, doesn't create a new profile, just adds a profile to the graph,
+    performs a null check on friendsList and if it is then it creates a new UndirectedGraph and add
+    user as the firstProfile and then adds user as a vertex
+     */
+
     public void addProfile(Profile user){
         if(friendsList == null){
-
+            friendsList = new UndirectedGraph<Profile>();
+            firstProfile = user;
         }
         friendsList.addVertex(user);
     }
@@ -34,13 +49,15 @@ public class ProfileManager {
 
     // only needs to display friends names
     void displayAllProfiles(){
-
+        /*
+        do either a BFS or DFS starting with firstProfile
+         */
     }
 
     void removeProfile(Profile user){
         /*
-        if removing the root Profile then we need to assign another random
-        Profile/vertex to root
+        if removing the firstProfile Profile then we need to assign another random
+        Profile/vertex to firstProfile
          */
     }
 
