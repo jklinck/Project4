@@ -19,15 +19,6 @@ public class ProfileManager {
       this.firstProfile = null;
     }
 
-    public void nullCheck(){
-        if(friendsList == null){
-            System.out.println("friendsList is null");
-        }
-        else{
-            System.out.println("friendsList is NOT null");
-        }
-    }
-
     /* add a profile to the graph, doesn't create a new profile, just adds a profile to the graph,
     performs a null check on friendsList and if it is then it creates a new UndirectedGraph and add
     user as the firstProfile and then adds user as a vertex
