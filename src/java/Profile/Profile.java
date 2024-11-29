@@ -32,26 +32,26 @@ public class Profile {
         return this.friends;
     }
 
-    void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
 
     // calls addProfile and connectFriends from ProfileManager
-    void addFriends(Profile friend){
+    public void addFriends(Profile friend){
 
     }
 
-    void displayProfile(){
+    public void displayProfile(){
         System.out.printf("Name: %s\n", this.name);
-        System.out.printf("Name: ds\n", this.age);
-        System.out.printf("Name: %b\n", this.status);
+        System.out.printf("Age: %d\n", this.age);
+        System.out.printf("Status: %b\n", this.status);
     }
 
-    void setStatus(){
+    public void setStatus(){
         if(this.status == false){
             this.status = true;
         }
-        if else(this.status == true){
+        else if(this.status == true){
             this.status = false;
         }
     }
