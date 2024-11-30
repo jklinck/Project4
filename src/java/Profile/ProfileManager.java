@@ -1,6 +1,7 @@
 package Profile;
 
 import GraphPackage.UndirectedGraph;
+import java.util.*;
 
 public class ProfileManager {
 
@@ -30,22 +31,41 @@ public class ProfileManager {
             firstProfile = user;
         }
         friendsList.addVertex(user);
+        /*
+        a graph can be acyclic, thus we do not need the last vertex
+        to be pointing at another vertex, thus it will operate similarly
+        to a doubly linked list, although it could end up cyclic if the
+        first profile and last profile are friends
+         */
     }
 
     // call addEdge method from undirectedGraph, this method comes from the
     // BasicGraphInterface
-    void connectFriends(Profile user1, Profile user2){
+    public void connectFriends(Profile user1, Profile user2){
         friendsList.addEdge(user1, user2);
     }
 
     // only needs to display friends names
-    void displayAllProfiles(){
-        /*
-        do either a BFS or DFS starting with firstProfile
-         */
+    public void displayAllProfiles(){
+        Stack<Profile> profiles = new Stack<>();
+        Queue<Profile> visited = new LinkedList<Profile>();
+
+        profiles.push(firstProfile);
+        while(!profiles.isEmpty()){
+            Profile current = profiles.pop();
+
+            if(!visited.contains(current)){
+                visited.add(current);
+                List<Profile> myFriends = current.getFriends();
+                for(Profile adjacent : myFriends){
+                    profiles.push(adjacent);
+                }
+                System.out.println(current.getName());
+            }
+        }
     }
 
-    void removeProfile(Profile user){
+    public void removeProfile(Profile user){
         /*
         if removing the firstProfile Profile then we need to assign another random
         Profile/vertex to firstProfile
