@@ -26,6 +26,14 @@ public class ProfileManager {
     user as the firstProfile and then adds user as a vertex
      */
 
+    /*
+    this is a check to see if all of the Profiles added in Main are being
+    added to UndirectedGraph friendsList
+     */
+    public int getAllFriends(){
+        return friendsList.getNumberOfVertices();
+    }
+
     public void addProfile(Profile user){
         if(friendsList == null){
             friendsList = new UndirectedGraph<Profile>();
