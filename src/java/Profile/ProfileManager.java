@@ -47,6 +47,10 @@ public class ProfileManager {
 
     // only needs to display friends names
     public void displayAllProfiles(){
+        /*
+        this isn't working, need to look at getFriends method in Profile as
+        potential issue
+         */
         Stack<Profile> profiles = new Stack<>();
         Queue<Profile> visited = new LinkedList<Profile>();
 
