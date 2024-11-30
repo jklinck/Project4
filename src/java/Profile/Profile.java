@@ -30,9 +30,6 @@ public class Profile {
 
     public LinkedListWithIterator<Profile> getFriends(){
         return this.friends;
-        /*
-        should add an exception if null
-         */
     }
 
     public void setName(String name){
