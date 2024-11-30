@@ -1,5 +1,6 @@
 package Profile;
 
+import ADTPackage.LinkedListWithIterator;
 import GraphPackage.UndirectedGraph;
 import java.util.*;
 
@@ -60,7 +61,7 @@ public class ProfileManager {
 
             if(!visited.contains(current)){
                 visited.add(current);
-                List<Profile> myFriends = current.getFriends();
+                LinkedListWithIterator<Profile> myFriends = current.getFriends();
                 for(Profile adjacent : myFriends){
                     profiles.push(adjacent);
                 }

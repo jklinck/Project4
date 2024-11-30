@@ -1,19 +1,19 @@
 package Profile;
 
-import java.util.*;
+import ADTPackage.LinkedListWithIterator;
 
 public class Profile {
 
     private String name;
     private int age;
-    private List friends;
+    private LinkedListWithIterator friends;
     private boolean status;
 
     public Profile(String name, int age){
         this.name = name;
         this.age = age;
         status = false;
-        friends = null;
+        friends = new LinkedListWithIterator<Profile>();
     }
 
     public String getName(){
@@ -40,8 +40,10 @@ public class Profile {
     }
 
     // calls addProfile and connectFriends from ProfileManager
-    public void addFriends(Profile friend){
+    public Profile addFriend(Profile friend){
+        friends.add(friend);
 
+        return friend;
     }
 
     public void displayProfile(){

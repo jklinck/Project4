@@ -11,11 +11,18 @@ public class Main {
         friendsList.addProfile(John);
         friendsList.addProfile(Amy);
         friendsList.connectFriends(John, Amy);
+        John.addFriend(Amy);
 
 //        friendsList.displayAllProfiles();
-        LinkedList<Profile> friends = John.getFriends();
+        /*
+        code below is working and is a step in the right direction for
+        getting displayAllProfiles() in ProfileManager working
+         */
+        LinkedListWithIterator<Profile> friends = John.getFriends();
+        for(Profile friend : friends) {
+            System.out.println(friend.getName());
+        }
 
-        Node current = friends.head;
 
     }
 }
