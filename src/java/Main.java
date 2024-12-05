@@ -29,9 +29,11 @@ public class Main {
 //            System.out.println(friend.getName());
 //        }
 //        friendsList.displayAllProfiles();
-        int x = friendsList.getAllFriends();
+//        int x = friendsList.getAllFriends();
+//
+//        System.out.println(x);
 
-        System.out.println(x);
+        friendsList.displayAllProfiles();
 
 
 

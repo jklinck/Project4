@@ -7,6 +7,7 @@ import java.util.*;
 public class ProfileManager {
 
    private UndirectedGraph<Profile> friendsList;
+   private ArrayList<Profile> friendsArray;
    private Profile firstProfile;
    /*
    I created a Profile firstProfile so the displayAllProfiles below would
@@ -18,6 +19,7 @@ public class ProfileManager {
 
     public ProfileManager(){
       this.friendsList = null;
+      this.friendsArray = null;
       this.firstProfile = null;
     }
 
@@ -37,9 +39,11 @@ public class ProfileManager {
     public void addProfile(Profile user){
         if(friendsList == null){
             friendsList = new UndirectedGraph<Profile>();
+            friendsArray = new ArrayList<>();
             firstProfile = user;
         }
         friendsList.addVertex(user);
+        friendsArray.add(user);
         /*
         a graph can be acyclic, thus we do not need the last vertex
         to be pointing at another vertex, thus it will operate similarly
@@ -56,25 +60,8 @@ public class ProfileManager {
 
     // only needs to display friends names
     public void displayAllProfiles(){
-        /*
-        this isn't working, need to look at getFriends method in Profile as
-        potential issue
-         */
-        Stack<Profile> profiles = new Stack<>();
-        Queue<Profile> visited = new LinkedList<Profile>();
-
-        profiles.push(firstProfile);
-        while(!profiles.isEmpty()){
-            Profile current = profiles.pop();
-
-            if(!visited.contains(current)){
-                visited.add(current);
-                LinkedListWithIterator<Profile> myFriends = current.getFriends();
-                for(Profile adjacent : myFriends){
-                    profiles.push(adjacent);
-                }
-                System.out.println(current.getName());
-            }
+        for(Profile user: friendsArray){
+            System.out.println(user.getName());
         }
     }
 
@@ -82,6 +69,8 @@ public class ProfileManager {
         /*
         if removing the firstProfile Profile then we need to assign another random
         Profile/vertex to firstProfile
+
+        also need to remove user from friendsArray
          */
     }
 
