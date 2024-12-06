@@ -1,21 +1,3 @@
-/*
-STILL NEED TO FINISH THESE METHODS
-removeProfile
-
-
-THESE ARE FINISHED
-constructor
-addProfile
-connectFriends
-displayAllProfiles
-
-
- */
-
-
-
-
-
 package Profile;
 
 import ADTPackage.LinkedListWithIterator;
@@ -40,6 +22,7 @@ public class ProfileManager {
     // call addEdge method from undirectedGraph, this method comes from the
     // BasicGraphInterface
     public void connectFriends(Profile user1, Profile user2){
+        // using addEdge from GraphPackage.DirectedGraph.java
         friendsList.addEdge(user1, user2);
     }
 
@@ -53,7 +36,12 @@ public class ProfileManager {
     public void removeProfile(Profile user){
         friendsArray.remove(user);
 
+    /*
+    we need to remove the profile from the graph and also
+    remove the edges
 
+
+     */
     }
 
 }
