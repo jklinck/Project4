@@ -10,7 +10,7 @@ public class ProfileManager {
    private ArrayList<Profile> friendsArray;
 
     public ProfileManager(){
-      this.friendsList = new UndirectedGraph<Profile>();
+      this.friendsList = new UndirectedGraph<>();
       this.friendsArray = new ArrayList<>();
     }
 
@@ -29,10 +29,8 @@ public class ProfileManager {
     // only needs to display friends names
     public void displayAllProfiles(){
         for(Profile user: friendsArray){
-            System.out.println(user.getName());
-            System.out.println(user.getAge());
-            System.out.println(user.getStatus());
-            System.out.printf("\n- - - - - - - - - - - - - \n");
+            user.displayProfile();
+            System.out.printf("- - - - - - - - - - - - - - - \n");
         }
     }
 
