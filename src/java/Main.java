@@ -1,9 +1,11 @@
 import Profile.Profile;
 import Profile.ProfileManager;
 import ADTPackage.LinkedListWithIterator;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        Scanner in = new Scanner();
         ProfileManager friendsList = new ProfileManager();
         Profile John = new Profile("John", 30);
         Profile Amy = new Profile("Amy", 25);
@@ -20,6 +22,8 @@ public class Main {
         friendsList.addProfile(Steve);
 
         friendsList.displayAllProfiles();
+
+
 
 
 

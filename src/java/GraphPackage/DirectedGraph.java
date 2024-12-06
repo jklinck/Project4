@@ -16,6 +16,17 @@ public class DirectedGraph<T> implements GraphInterface<T>
         edgeCount = 0;
     } // end default constructor
 
+    /*
+    we added this method so we could access the remove method
+    from UnsortedLinkedDictionary, since the graph we are creating
+    in ProfileManager actually is an UnsortedLinkedDictionary because in
+    DirectedGraph.java it is creating the graph with a field names vertices
+    that is an UnsortedLinkedDictionary
+     */
+    public void removeUser(T user){
+        vertices.remove(user);
+    }
+
     public boolean addVertex(T vertexLabel)
     {
         VertexInterface<T> addOutcome = vertices.add(vertexLabel, new Vertex<>(vertexLabel));

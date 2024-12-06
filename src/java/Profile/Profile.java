@@ -36,6 +36,10 @@ public class Profile {
         this.name = name;
     }
 
+    public void setAge(int age){
+        this.age = age;
+    }
+
     // calls addProfile and connectFriends from ProfileManager
     public Profile addFriend(Profile friend){
         friends.add(friend);

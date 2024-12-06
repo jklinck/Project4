@@ -30,12 +30,30 @@ public class ProfileManager {
     public void displayAllProfiles(){
         for(Profile user: friendsArray){
             System.out.println(user.getName());
+            System.out.println(user.getAge());
+            System.out.println(user.getStatus());
+            System.out.printf("\n- - - - - - - - - - - - - \n");
         }
     }
 
+    public void displayMyFriends(Profile user){
+        /*
+        you can either pass the user that is logged in
+        or you can call this with one of the users friends and display
+        your friends friends
+         */
+
+    }
+
+
     public void removeProfile(Profile user){
         friendsArray.remove(user);
-
+        /*
+        removeUser is the method that we added to DirectedGraph.java so we could
+        access the remove method in UnsortedLinkedDictionary since the graph being
+        created inside of
+         */
+        friendsList.removeUser(user);
     /*
     we need to remove the profile from the graph and also
     remove the edges
