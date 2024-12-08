@@ -28,9 +28,9 @@ public class Profile {
         return this.status;
     }
 
-//    public LinkedListWithIterator<Profile> getFriends(){
-//        return this.friends;
-//    }
+    public LinkedListWithIterator<Profile> getFriends(){
+        return this.friends;
+    }
 
     public void setName(String name){
         this.name = name;
@@ -41,11 +41,11 @@ public class Profile {
     }
 
     // calls addProfile and connectFriends from ProfileManager
-//    public Profile addFriend(Profile friend){
-//        friends.add(friend);
-//
-//        return friend;
-//    }
+    public Profile addFriend(Profile friend){
+        friends.add(friend);
+
+        return friend;
+    }
 
     public void displayProfile(){
         System.out.printf("Name: %s\n", this.name);
