@@ -6,14 +6,14 @@ public class Profile {
 
     private String name;
     private int age;
-//    private LinkedListWithIterator friends;
+    private LinkedListWithIterator friends;
     private boolean status;
 
     public Profile(String name, int age){
         this.name = name;
         this.age = age;
         status = false;
-//        friends = new LinkedListWithIterator<Profile>();
+        friends = new LinkedListWithIterator<Profile>();
     }
 
     public String getName(){
