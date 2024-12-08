@@ -2,18 +2,20 @@ package Profile;
 
 import ADTPackage.LinkedListWithIterator;
 
+import java.lang.reflect.Array;
+
 public class Profile {
 
     private String name;
     private int age;
-    private LinkedListWithIterator friends;
+    private ArrayList<Profile> friends;
     private boolean status;
 
     public Profile(String name, int age){
         this.name = name;
         this.age = age;
         status = false;
-        friends = new LinkedListWithIterator<Profile>();
+        friends = new ArrayList<>();
     }
 
     public String getName(){
@@ -28,7 +30,7 @@ public class Profile {
         return this.status;
     }
 
-    public LinkedListWithIterator<Profile> getFriends(){
+    public ArrayList<Profile> getFriends(){
         return this.friends;
     }
 
