@@ -21,7 +21,7 @@ public class Main {
                 check if user input is valid (a number between 1-10), if it
                 is then continue with the program
                  */
-                if(in >= 1 && in <= 10){
+                if(selection >= 1 && selection <= 10){
 
                 }
                 /*
@@ -42,9 +42,7 @@ public class Main {
 
     } // end userSession()
 
-    public static void main(String[] args){
-
-//        userSession();
+    public static void testMethod(){
         ProfileManager friendsList = new ProfileManager();
         Profile John = new Profile("John", 30);
         Profile Amy = new Profile("Amy", 25);
@@ -61,6 +59,13 @@ public class Main {
         friendsList.connectFriends(John, Alex);
 
         friendsList.displayAllProfiles();
+    }
+
+    public static void main(String[] args){
+
+//        userSession();
+//        testMethod();
+
 
     } // end main()
 }
