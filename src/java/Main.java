@@ -11,9 +11,31 @@ public class Main {
         int selection = 0;
 
         while(!logout){
-            ProfileManager friendsList = new ProfileManager();
-            System.out.println();
-            logout = true;
+            
+            /* check if user input is a number, if it is then continue into the if
+            statement below
+             */
+            if(in.hasNextIint()){
+                selection = in.nextInt();
+                /*
+                check if user input is valid (a number between 1-10), if it
+                is then continue with the program
+                 */
+                if(in >= 1 && in <= 10){
+
+                }
+                /*
+                if a user enters any other number than 1-10, then back up to the top of the loop
+                to start again
+                 */
+                else{
+                    System.out.println("Invalid option, please enter a number between 1-10.");
+                }
+            }
+            // if a user enters something other than a number, start the loop over again
+            else{
+                System.out.println("Invalid option, please only choose a number.");
+            }
         }
 
 
