@@ -15,7 +15,7 @@ public class Main {
             /* check if user input is a number, if it is then continue into the if
             statement below
              */
-            if(in.hasNextIint()){
+            if(in.hasNextInt()){
                 selection = in.nextInt();
                 /*
                 check if user input is valid (a number between 1-10), if it
