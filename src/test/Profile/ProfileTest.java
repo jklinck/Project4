@@ -20,7 +20,7 @@ class ProfileTest {
     @Test
     void getStatus() {
         Profile profile = new Profile("John Doe", 25);
-        assertFalse(profile.getStatus(), "The initial status should be false.");
+        assertTrue(profile.getStatus(), "The initial status should be true.");
     }
 
     @Test
@@ -50,9 +50,9 @@ class ProfileTest {
         Profile profile = new Profile("John Doe", 25);
 
         profile.setStatus();
-        assertTrue(profile.getStatus(), "The status should toggle to true.");
+        assertFalse(profile.getStatus(), "The status should toggle to false.");
 
         profile.setStatus();
-        assertFalse(profile.getStatus(), "The status should toggle back to false.");
+        assertTrue(profile.getStatus(), "The status should toggle back to true.");
     }
 }
