@@ -1,6 +1,7 @@
 import Profile.Profile;
 import Profile.ProfileManager;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -19,9 +20,12 @@ public class Main {
 
     public static void userSession(){
         ProfileManager friendsList = new ProfileManager();
+        ArrayList<Profile> friendsArray = friendsList.getFriendsArray();
         Scanner in = new Scanner(System.in);
         // use this so you can switch users
         Profile admin = null;
+        Profile newProfile = null;
+        Profile newFriend = null;
         boolean logout = false;
         int selection = 0;
         String name = "";
@@ -47,7 +51,7 @@ public class Main {
                         name = in.next();
                         System.out.println("Please enter your age: ");
                         age = in.nextInt();
-                        Profile newProfile = new Profile(name, age);
+                        newProfile = new Profile(name, age);
                         admin  = newProfile;
                         friendsList.addProfile(admin);
                         newProfile.displayProfile();
@@ -58,7 +62,20 @@ public class Main {
                     }
                     else if(selection == 3){
                         // add a friend
-
+                        System.out.printf("Please enter the name of the friend you would like to add: ");
+                        name = in.next();
+                        boolean userFound = false;
+                        for(Profile user: friendsArray){
+                            if(user.getName().equals(name)){
+                                admin.addFriend(user);
+                                user.addFriend(admin);
+                                userFound = true;
+                                break;
+                            }
+                        }
+                        if(!userFound){
+                            System.out.println("You cannot add that friend because that user is not in the group.");
+                        }
                     }
                     else if(selection == 4){
                         // view your friends list
@@ -68,27 +85,43 @@ public class Main {
                         // delete a profile
                         // need an exception if the profile doesn't exist
                         System.out.println("Enter the name of the user you would like to delete: ");
-//                        name = in.next();
-//                        friendsList.deleteUser(name);
+                        name = in.next();
+                        boolean userFound = false;
+                        for(Profile user: friendsArray){
+                            if(user.getName().equals(name)){
+                                friendsList.removeProfile(user);
+                                userFound = true;
+                                break;
+                            }
+                        }
+                        if(!userFound){
+                            System.out.println("You cannot delete that user because they are not in the group.");
+                        }
                     }
                     else if(selection == 6){
                         // add another profile
                         System.out.println("To add another user to the group, please enter their name: ");
                         name = in.next();
                         System.out.println("Please enter their age: ");
-                        Profile addFriend = new Profile(name, age);
-                        friendsList.addProfile(addFriend);
+                        Profile addProfile = new Profile(name, age);
+                        friendsList.addProfile(addProfile);
                     }
                     else if(selection == 7){
                         // switch to a different user
                         System.out.println("Enter the name of the user you would like to login: ");
                         name = in.next();
-                        /*
-                        admin = (Profile)name;
-                        this doesn't work, I need to somehow loop through all users and then assign
-                        admin to that users, this doesn't work because name is a String and not a
-                        Profile object
-                         */
+                        boolean userFound = false;
+                        for(Profile user: friendsArray){
+                            if(user.getName().equals(name)){
+                                admin = user;
+                                userFound = true;
+                                break;
+                            }
+                        }
+                        if(!userFound){
+                            System.out.println("You cannot delete that user because they are not in the group.");
+                        }
+
                     }
                     else if(selection == 8){
                         testMethod();
@@ -111,12 +144,12 @@ public class Main {
             else{
                 System.out.println("Invalid option, please only choose a number.");
                 sessionOptions();
+                // clear the input buffer
                 in.next();
             }
         }
-
-
-
+        // close scanner
+        in.close();
     } // end userSession()
 
     public static void testMethod(){
@@ -152,22 +185,24 @@ public class Main {
 
 
 /*
+to complete userSession I just need to complete
+steps 5 and 7 of the user options
+
 
 COMPLETED
-
-UML
 Profile.java
 ProfileManager.java
-
-TO BE COMPLETED
-add javadoc comments to Profile.java (Joe)
-add javadoc comments to ProfileManager.java (Joe)
-userSession in Main.java (Joe)
-Profile.java test (Anthony)
-ProfileManager.java test (Anthony)
+Profile.java test
+ProfileManager.java test
 DirectedGraph test
 UndirectedGraph test
 Vertex test
+
+TO BE COMPLETED
+UML (Anthony)
+add javadoc comments to Profile.java (Joe)
+add javadoc comments to ProfileManager.java (Joe)
+userSession in Main.java (Joe)
 
 
 meet Monday 3pm
