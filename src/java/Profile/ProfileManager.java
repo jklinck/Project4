@@ -6,7 +6,7 @@ import java.util.*;
 public class ProfileManager {
 
    private UndirectedGraph<Profile> friendsList;
-   ArrayList<Profile> friendsArray;
+   private ArrayList<Profile> friendsArray;
 
     public ProfileManager(){
       this.friendsList = new UndirectedGraph<>();
@@ -16,6 +16,10 @@ public class ProfileManager {
     public void addProfile(Profile user){
         friendsList.addVertex(user);
         friendsArray.add(user);
+    }
+
+    public ArrayList getFriendsArray(){
+        return this.friendsArray;
     }
 
     // call addEdge method from undirectedGraph, this method comes from the
