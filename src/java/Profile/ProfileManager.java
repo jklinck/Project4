@@ -6,7 +6,7 @@ import java.util.*;
 public class ProfileManager {
 
    private UndirectedGraph<Profile> friendsList;
-   private ArrayList<Profile> friendsArray;
+   ArrayList<Profile> friendsArray;
 
     public ProfileManager(){
       this.friendsList = new UndirectedGraph<>();
