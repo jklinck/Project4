@@ -99,7 +99,7 @@ public class Main {
                     }
                 }
                 /*
-                if a user enters any other number than 1-10, then back up to the top of the loop
+                if a user enters any other number than 1-9, then back up to the top of the loop
                 to start again
                  */
                 else{
@@ -110,6 +110,8 @@ public class Main {
             // if a user enters something other than a number, start the loop over again
             else{
                 System.out.println("Invalid option, please only choose a number.");
+                sessionOptions();
+                in.next();
             }
         }
 
