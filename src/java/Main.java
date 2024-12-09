@@ -22,7 +22,8 @@ public class Main {
         System.out.println("    5. Delete a profile.");
         System.out.println("    6. Add another profile.");
         System.out.println("    7. Switch to a different user.");
-        System.out.println("    8. Logout of your session.");
+        System.out.println("    8. Run testMethod.");
+        System.out.println("    9. Logout of your session.");
         while(!logout){
             
             /* check if user input is a number, if it is then continue into the if
@@ -31,10 +32,10 @@ public class Main {
             if(in.hasNextInt()){
                 selection = in.nextInt();
                 /*
-                check if user input is valid (a number between 1-8), if it
+                check if user input is valid (a number between 1-9), if it
                 is then continue with the program
                  */
-                if(selection >= 1 && selection <= 8){
+                if(selection >= 1 && selection <= 9){
                     if(selection ==1){
                         // create profile
                         System.out.println("Please enter your name: ");
@@ -90,6 +91,9 @@ public class Main {
                          */
                     }
                     else if(selection == 8){
+                        testMethod();
+                    }
+                    else if(selection == 9){
                         logout = true;
                     }
                 }
