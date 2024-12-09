@@ -172,7 +172,8 @@ meet Tuesday 1pm
 UML corrections
 
 here is how methods should be written in the UML
-methodName(parameter name: parameter type): returnType
+methodName(parameter name: parameter type): returnType, this is from pg.22 in the book,
+Eric said we should follow this pattern
 
 Profile
 setAge is missing
