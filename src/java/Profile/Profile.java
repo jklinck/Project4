@@ -14,7 +14,7 @@ public class Profile {
     public Profile(String name, int age){
         this.name = name;
         this.age = age;
-        status = false;
+        status = true;
         friends = new ArrayList<>();
     }
 
