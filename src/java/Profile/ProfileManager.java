@@ -18,7 +18,7 @@ public class ProfileManager {
         friendsArray.add(user);
     }
 
-    public ArrayList getFriendsArray(){
+    public ArrayList<Profile> getFriendsArray(){
         return this.friendsArray;
     }
 
@@ -52,7 +52,6 @@ public class ProfileManager {
         }
 
     }
-
 
     public void removeProfile(Profile user){
         friendsArray.remove(user);
