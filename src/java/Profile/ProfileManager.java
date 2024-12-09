@@ -1,6 +1,5 @@
 package Profile;
 
-import ADTPackage.LinkedListWithIterator;
 import GraphPackage.UndirectedGraph;
 import java.util.*;
 
@@ -42,7 +41,11 @@ public class ProfileManager {
         or you can call this with one of the users friends and display
         your friends friends
          */
-        user.getFriends();
+        System.out.printf("%s's friends: \n", user.getName());
+        ArrayList<Profile> list = user.getFriends();
+        for(Profile current: list){
+            System.out.println(current.getName());
+        }
 
     }
 
