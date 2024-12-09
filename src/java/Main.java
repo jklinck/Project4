@@ -4,16 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void userSession(){
-        ProfileManager friendsList = new ProfileManager();
-        Scanner in = new Scanner(System.in);
-        // use this so you can switch users
-        Profile admin = null;
-        boolean logout = false;
-        int selection = 0;
-        String name = "";
-        int age = 0;
-
+    public static void sessionOptions(){
         System.out.println("Please enter a selection from below: ");
         System.out.println("    1: Create your profile.");
         System.out.println("    2. View all profiles.");
@@ -24,6 +15,20 @@ public class Main {
         System.out.println("    7. Switch to a different user.");
         System.out.println("    8. Run testMethod.");
         System.out.println("    9. Logout of your session.");
+    }
+
+    public static void userSession(){
+        ProfileManager friendsList = new ProfileManager();
+        Scanner in = new Scanner(System.in);
+        // use this so you can switch users
+        Profile admin = null;
+        boolean logout = false;
+        int selection = 0;
+        String name = "";
+        int age = 0;
+
+        sessionOptions();
+
         while(!logout){
             
             /* check if user input is a number, if it is then continue into the if
@@ -44,12 +49,7 @@ public class Main {
                         age = in.nextInt();
                         Profile newProfile = new Profile(name, age);
                         admin  = newProfile;
-                        /*
-                        it's not possible in Java to dynamically use the users data they
-                        entered to name an object, I wanted to not use newProfile above and use
-                        the users name
-                         */
-                        friendsList.addProfile(newProfile);
+                        friendsList.addProfile(admin);
                         newProfile.displayProfile();
                     }
                     else if(selection == 2){
@@ -77,7 +77,7 @@ public class Main {
                         name = in.next();
                         System.out.println("Please enter their age: ");
                         Profile addFriend = new Profile(name, age);
-                        friendsList.addProfile(admin);
+                        friendsList.addProfile(addFriend);
                     }
                     else if(selection == 7){
                         // switch to a different user
@@ -94,6 +94,7 @@ public class Main {
                         testMethod();
                     }
                     else if(selection == 9){
+                        System.out.println("You have successfully logged out.");
                         logout = true;
                     }
                 }
@@ -102,7 +103,8 @@ public class Main {
                 to start again
                  */
                 else{
-                    System.out.println("Invalid option, please enter a number between 1-10.");
+                    System.out.println("Invalid option.");
+                    sessionOptions();
                 }
             }
             // if a user enters something other than a number, start the loop over again
@@ -132,16 +134,16 @@ public class Main {
         friendsList.connectFriends(John, Alex);
         friendsList.connectFriends(John, Steve);
 
-//        friendsList.displayAllProfiles();
+        System.out.println("Here is a list of all profiles: ");
+        friendsList.displayAllProfiles();
 
+        System.out.println("Here is a list of John's friends: ");
         friendsList.displayMyFriends(John);
     }
 
     public static void main(String[] args){
 
         userSession();
-//        testMethod();
-
 
     } // end main()
 }
