@@ -57,15 +57,45 @@ public class Main {
 
         friendsList.connectFriends(John, Amy);
         friendsList.connectFriends(John, Alex);
+        friendsList.connectFriends(John, Steve);
 
-        friendsList.displayAllProfiles();
+//        friendsList.displayAllProfiles();
+
+        friendsList.displayMyFriends(John);
     }
 
     public static void main(String[] args){
 
 //        userSession();
-//        testMethod();
+        testMethod();
 
 
     } // end main()
 }
+
+
+/*
+
+COMPLETED
+
+UML
+Profile.java
+ProfileManager.java
+
+TO BE COMPLETED
+add javadoc comments to Profile.java (Joe)
+add javadoc comments to ProfileManager.java (Joe)
+userSession in Main.java (Joe)
+Profile.java test (Anthony)
+ProfileManager.java test (Anthony)
+
+OPTIONAL
+DirectedGraph test
+UndirectedGraph test
+Vertex test
+
+
+meet Monday 3pm
+meet Tuesday 1pm
+
+ */

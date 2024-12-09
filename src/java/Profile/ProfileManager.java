@@ -1,6 +1,5 @@
 package Profile;
 
-import ADTPackage.LinkedListWithIterator;
 import GraphPackage.UndirectedGraph;
 import java.util.*;
 
@@ -24,6 +23,8 @@ public class ProfileManager {
     public void connectFriends(Profile user1, Profile user2){
         // using addEdge from GraphPackage.DirectedGraph.java
         friendsList.addEdge(user1, user2);
+        user1.addFriend(user2);
+        user2.addFriend(user1);
     }
 
     // only needs to display friends names
@@ -40,6 +41,11 @@ public class ProfileManager {
         or you can call this with one of the users friends and display
         your friends friends
          */
+        System.out.printf("%s's friends: \n", user.getName());
+        ArrayList<Profile> list = user.getFriends();
+        for(Profile current: list){
+            System.out.println(current.getName());
+        }
 
     }
 
