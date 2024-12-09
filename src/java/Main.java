@@ -197,37 +197,14 @@ ProfileManager.java test
 DirectedGraph test
 UndirectedGraph test
 Vertex test
+UML (Anthony)
 
 TO BE COMPLETED
-UML (Anthony)
 add javadoc comments to Profile.java (Joe)
 add javadoc comments to ProfileManager.java (Joe)
 userSession in Main.java (Joe)
 
-
-meet Monday 3pm
 meet Tuesday 1pm
 
-UML corrections
-
-here is how methods should be written in the UML
-methodName(parameter name: parameter type): returnType, this is from pg.22 in the book,
-Eric said we should follow this pattern
-
-Profile
-setAge is missing
-friends should be an ArrayList
-getFriends(): ArrayList<Profile>
-setName(name: String): void
-setAge(age: int): void
-addFriend(friend: Profile): Profile
-
-ProfileManager
-remove firstProfile field
-add field    friendsArray: ArrayList<Profile>
-remove getAllFriends and replace it with displayMyFriends(user:Profile): void
-missing      getFriendsArray(): ArrayList<Profile>
-connectFriends(user1: Profile, user2: Profile): void
-removeProfile(user: Profile): void
 
  */
