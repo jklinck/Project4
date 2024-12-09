@@ -13,7 +13,7 @@ class ProfileManagerTest {
         manager.addProfile(user);
 
         // Check if the profile exists in the ArrayList (friendsArray)
-        assertTrue(manager.friendsArray.contains(user), "The user should be added to the friends array.");
+        assertTrue(manager.getFriendsArray().contains(user), "The user should be added to the friends array.");
     }
 
     @Test
@@ -42,6 +42,6 @@ class ProfileManagerTest {
         manager.removeProfile(user);
 
         // Check if the profile is removed from the ArrayList (friendsArray)
-        assertFalse(manager.friendsArray.contains(user), "The user should be removed from the friends array.");
+        assertFalse(manager.getFriendsArray().contains(user), "The user should be removed from the friends array.");
     }
 }

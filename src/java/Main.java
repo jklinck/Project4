@@ -8,7 +8,7 @@ public class Main {
         ProfileManager friendsList = new ProfileManager();
         Scanner in = new Scanner(System.in);
         // use this so you can switch users
-        Profile admin;
+        Profile admin = null;
         boolean logout = false;
         int selection = 0;
         String name = "";
