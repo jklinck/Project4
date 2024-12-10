@@ -94,12 +94,6 @@ public class ProfileManager {
         created inside of
          */
         friendsList.removeUser(user);
-    /*
-    we need to remove the profile from the graph and also
-    remove the edges
-
-
-     */
     }
 
 }
