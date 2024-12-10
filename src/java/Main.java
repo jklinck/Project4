@@ -183,5 +183,26 @@ public class Main {
     } // end main()
 }
 
+/*
 
-/
+We met a number of times both in person and in multiple huddles
+on slack.
+
+Initially we created a text file (which we deleted) that outlined what we
+needed to do to create the Profile and ProfileManager classes as well as ideas
+of how to implement the method in each.
+
+From there Anthony completed the UML and all testing. Joe completed Profile,
+ProfileManager and Main.
+
+While we each had our individual responsibilities, we also each looked over
+each others work and made suggestions. So nothing was 100% one person's responsibility.
+
+We each found things that needed to be fixed in each other's work.
+
+Both Anthony and I (Joe) agree that this was a mutual effort where we each completed
+half of the work for the project.
+
+ */
+
+
