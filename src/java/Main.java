@@ -62,24 +62,34 @@ public class Main {
                     }
                     else if(selection == 3){
                         // add a friend
-                        System.out.printf("Please enter the name of the friend you would like to add: ");
-                        name = in.next();
-                        boolean userFound = false;
-                        for(Profile user: friendsArray){
-                            if(user.getName().equals(name)){
-                                admin.addFriend(user);
-                                user.addFriend(admin);
-                                userFound = true;
-                                break;
+                        if(admin != null) {
+                            System.out.printf("Please enter the name of the friend you would like to add: ");
+                            name = in.next();
+                            boolean userFound = false;
+                            for(Profile user: friendsArray){
+                                if(user.getName().equals(name)){
+                                    admin.addFriend(user);
+                                    user.addFriend(admin);
+                                    userFound = true;
+                                    break;
+                                }
+                            }
+                            if(!userFound){
+                                System.out.println("You cannot add that friend because that user is not in the group.");
                             }
                         }
-                        if(!userFound){
-                            System.out.println("You cannot add that friend because that user is not in the group.");
+                        else{
+                            System.out.println("You must first create a profile before you can add friends.");
                         }
                     }
                     else if(selection == 4){
                         // view your friends list
-                        friendsList.displayMyFriends(admin);
+                        if(admin != null) {
+                            friendsList.displayMyFriends(admin);
+                        }
+                        else{
+                            System.out.println("You must first create a profile before you can print your friends.");
+                        }
                     }
                     else if(selection == 5){
                         // delete a profile
@@ -105,6 +115,15 @@ public class Main {
                         System.out.println("Please enter their age: ");
                         Profile addProfile = new Profile(name, age);
                         friendsList.addProfile(addProfile);
+                        /*
+                        if user did not create a profile upon starting the session then
+                        this will assign admin to the user being created in this step, I did
+                        this because we need to have an admin in order to not hit the else statements
+                        in some of the other selections
+                         */
+                        if(admin == null){
+                            admin = addProfile;
+                        }
                     }
                     else if(selection == 7){
                         // switch to a different user
@@ -119,7 +138,7 @@ public class Main {
                             }
                         }
                         if(!userFound){
-                            System.out.println("You switch to that user because they are not in the group.");
+                            System.out.println("You cannot switch to that user because they are not in the group.");
                         }
 
                     }
@@ -128,7 +147,9 @@ public class Main {
                     }
                     else if(selection == 9){
                         System.out.println("You have successfully logged out.");
-                        admin.setStatus();
+                        if(admin != null) {
+                            admin.setStatus();
+                        }
                         logout = true;
                     }
                 }
