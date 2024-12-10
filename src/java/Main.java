@@ -204,4 +204,34 @@ half of the work for the project.
 
  */
 
+/*
+
+Missing tests
+
+ProfileTest
+setAge
+
+ProfileManager
+displayAllProfiles
+displayMyFriends
+
+- - - - - - - - - - - - - -
+
+GRAPH PACKAGE 55/60   91%
+
+UndirectedGraph
+everything is covered
+
+DirectedGraph 22/24
+findTerminal is missing
+  EntryPQ class
+    compareTo is missing
+    toString is missing.
+
+Vertex  28/31
+    this is missing all of the inner class methods
+    from NeighborIterator, Edge and WeightIterator
+
+ */
+
 
