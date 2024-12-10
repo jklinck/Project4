@@ -184,27 +184,4 @@ public class Main {
 }
 
 
-/*
-to complete userSession I just need to complete
-steps 5 and 7 of the user options
-
-
-COMPLETED
-Profile.java
-ProfileManager.java
-Profile.java test
-ProfileManager.java test
-DirectedGraph test
-UndirectedGraph test
-Vertex test
-UML (Anthony)
-userSession in Main.java (Joe)
-add javadoc comments to Profile.java (Joe)
-
-TO BE COMPLETED
-add javadoc comments to ProfileManager.java (Joe)
-
-meet Tuesday 1pm
-
-
- */
+/
