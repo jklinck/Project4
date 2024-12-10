@@ -119,7 +119,7 @@ public class Main {
                             }
                         }
                         if(!userFound){
-                            System.out.println("You cannot delete that user because they are not in the group.");
+                            System.out.println("You switch to that user because they are not in the group.");
                         }
 
                     }
