@@ -128,6 +128,7 @@ public class Main {
                     }
                     else if(selection == 9){
                         System.out.println("You have successfully logged out.");
+                        admin.setStatus();
                         logout = true;
                     }
                 }
@@ -177,11 +178,9 @@ public class Main {
     }
 
     public static void main(String[] args){
-
         userSession();
-
     } // end main()
-}
+} // end Main class
 
 /*
 
