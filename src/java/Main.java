@@ -189,7 +189,7 @@ on slack.
 
 Initially we created a text file (which we deleted) that outlined what we
 needed to do to create the Profile and ProfileManager classes as well as ideas
-of how to implement the method in each.
+of how to implement the methods in each.
 
 From there Anthony completed the UML and all testing. Joe completed Profile,
 ProfileManager and Main.
