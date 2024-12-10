@@ -198,11 +198,11 @@ DirectedGraph test
 UndirectedGraph test
 Vertex test
 UML (Anthony)
+userSession in Main.java (Joe)
+add javadoc comments to Profile.java (Joe)
 
 TO BE COMPLETED
-add javadoc comments to Profile.java (Joe)
 add javadoc comments to ProfileManager.java (Joe)
-userSession in Main.java (Joe)
 
 meet Tuesday 1pm
 

@@ -3,27 +3,49 @@ package Profile;
 import GraphPackage.UndirectedGraph;
 import java.util.*;
 
+/**
+ * This class is for creating an UndirectedGraph containing Profile objects to
+ * create users in a social network.
+ * @author Joe Klinck
+ * @author Anthony Lei
+ */
+
 public class ProfileManager {
 
    private UndirectedGraph<Profile> friendsList;
    private ArrayList<Profile> friendsArray;
 
+    /**
+     * Default constructor for creating an UndirectedGraph containing Profile objects
+     * of users and mirror that graph with an ArrayList
+     */
     public ProfileManager(){
       this.friendsList = new UndirectedGraph<>();
       this.friendsArray = new ArrayList<>();
     }
 
+    /**
+     * Add a profile to the social network
+     * @param user - Profile
+     */
     public void addProfile(Profile user){
         friendsList.addVertex(user);
         friendsArray.add(user);
     }
 
+    /**
+     * Returns and array containing all users
+     * @return - ArrayList of type Profile
+     */
     public ArrayList<Profile> getFriendsArray(){
         return this.friendsArray;
     }
 
-    // call addEdge method from undirectedGraph, this method comes from the
-    // BasicGraphInterface
+    /**
+     * Allows a user to connect themselves to other users (create a friendship)
+     * @param user1 - Profile
+     * @param user2 - Profile
+     */
     public void connectFriends(Profile user1, Profile user2){
         // using addEdge from GraphPackage.DirectedGraph.java
         friendsList.addEdge(user1, user2);
@@ -31,7 +53,9 @@ public class ProfileManager {
         user2.addFriend(user1);
     }
 
-    // only needs to display friends names
+    /**
+     * Displays all Profiles in the social network
+     */
     public void displayAllProfiles(){
         for(Profile user: friendsArray){
             user.displayProfile();
@@ -39,6 +63,10 @@ public class ProfileManager {
         }
     }
 
+    /**
+     * Allows a user to print out the names of all of their friends
+     * @param user - Profile
+     */
     public void displayMyFriends(Profile user){
         /*
         you can either pass the user that is logged in
@@ -53,6 +81,11 @@ public class ProfileManager {
 
     }
 
+    /**
+     * Allows for the deleting of a user from the graph, also removes the user
+     * from the ArrayList which is mirroring the graph.
+     * @param user - Profile
+     */
     public void removeProfile(Profile user){
         friendsArray.remove(user);
         /*
