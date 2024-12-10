@@ -39,6 +39,12 @@ class ProfileTest {
         assertTrue(profile.getFriends().contains(friend), "The friend should be added to the list of friends.");
     }
 
+    void setAgeTest() {
+        Profile profile = new Profile("John Doe", 25);
+        profile.setAge(27);
+        assertEquals(27, profile.getAge(), "The age should match the initialized value.");
+    }
+
     @Test
     void displayProfile() {
         Profile profile = new Profile("John Doe", 25);
@@ -54,5 +60,12 @@ class ProfileTest {
 
         profile.setStatus();
         assertTrue(profile.getStatus(), "The status should toggle back to true.");
+    }
+
+    @Test
+    void setAge() {
+        Profile profile = new Profile("John Doe", 25);
+        profile.setAge(27);
+        assertEquals(27, profile.getAge(), "The age should match the initialized value.");
     }
 }
