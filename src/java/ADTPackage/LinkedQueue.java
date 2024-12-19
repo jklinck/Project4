@@ -17,6 +17,10 @@ public class LinkedQueue<T> implements QueueInterface<T>
       lastNode = null;
    } // end default constructor
 
+   /**
+    * Adds a new node to the back.
+    * @param newEntry  an object to be added
+    */
    public void enqueue(T newEntry)
    {
       Node newNode = new Node(newEntry, null);
@@ -29,6 +33,10 @@ public class LinkedQueue<T> implements QueueInterface<T>
       lastNode = newNode;
    } // end enqueue
 
+   /**
+    * Returns first node but does not remove it.
+    * @return Node
+    */
    public T getFront()
    {
       T front = null;
@@ -39,6 +47,10 @@ public class LinkedQueue<T> implements QueueInterface<T>
       return front;
    } // end getFront
 
+   /**
+    * Retrieves first node and returns it.
+    * @return Node
+    */
    public T dequeue()
    {
       T front = null;

@@ -1,5 +1,6 @@
 import Profile.Profile;
 import Profile.ProfileManager;
+import ADTPackage.LinkedQueue;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -14,8 +15,10 @@ public class Main {
         System.out.println("    5. Delete a profile.");
         System.out.println("    6. Add another profile.");
         System.out.println("    7. Switch to a different user.");
-        System.out.println("    8. Run testMethod.");
-        System.out.println("    9. Logout of your session.");
+        System.out.println("    8. Run displayBreadthFirstTraversal.");
+        System.out.println("    9. Run displayDepthFirstTraversal.");
+        System.out.println("    10. Run displayAllProfiles.");
+        System.out.println("    11. Logout of your session.");
     }
 
     public static void userSession(){
@@ -58,7 +61,8 @@ public class Main {
                     }
                     else if(selection == 2){
                         // view all profiles
-                        friendsList.displayAllProfiles();
+//                        friendsList.displayAllProfiles();
+                        friendsList.displayAllProfilesBreadthFirst(admin);
                     }
                     else if(selection == 3){
                         // add a friend
@@ -113,6 +117,7 @@ public class Main {
                         System.out.println("To add another user to the group, please enter their name: ");
                         name = in.next();
                         System.out.println("Please enter their age: ");
+                        age = in.nextInt();
                         Profile addProfile = new Profile(name, age);
                         friendsList.addProfile(addProfile);
                         /*
@@ -143,9 +148,15 @@ public class Main {
 
                     }
                     else if(selection == 8){
-                        testMethod();
+                        breadth();
                     }
                     else if(selection == 9){
+                        depth();
+                    }
+                    else if(selection == 10){
+                        displayAll();
+                    }
+                    else if(selection == 11){
                         System.out.println("You have successfully logged out.");
                         if(admin != null) {
                             admin.setStatus();
@@ -174,29 +185,49 @@ public class Main {
         in.close();
     } // end userSession()
 
-    public static void testMethod(){
+    public static ProfileManager profileNetwork(){
         ProfileManager friendsList = new ProfileManager();
         Profile John = new Profile("John", 30);
         Profile Amy = new Profile("Amy", 25);
 
         Profile Alex = new Profile("Alex", 21);
         Profile Steve = new Profile("Steve", 27);
+        Profile James = new Profile("James", 35);
+        Profile Dave = new Profile("Dave", 19);
 
         friendsList.addProfile(John);
         friendsList.addProfile(Amy);
         friendsList.addProfile(Alex);
         friendsList.addProfile(Steve);
+        friendsList.addProfile(James);
+        friendsList.addProfile(Dave);
 
+        friendsList.connectFriends(John, Steve);
         friendsList.connectFriends(John, Amy);
         friendsList.connectFriends(John, Alex);
-        friendsList.connectFriends(John, Steve);
+        friendsList.connectFriends(Steve, James);
+        friendsList.connectFriends(Amy, Dave);
+        friendsList.connectFriends(Dave, James);
 
-        System.out.println("Here is a list of all profiles: ");
-        friendsList.displayAllProfiles();
-
-        System.out.println("Here is a list of John's friends: ");
-        friendsList.displayMyFriends(John);
+        return friendsList;
     }
+
+    public static void breadth(){
+        ProfileManager network = profileNetwork();
+
+//        network.displayAllProfilesBreadthFirst(John);
+    }
+
+    public static void depth(){
+        ProfileManager network = profileNetwork();
+//        network.displayAllProfilesDepthFirst(John);
+    }
+
+    public static void displayAll(){
+        ProfileManager network = profileNetwork();
+        network.displayAllProfiles();
+    }
+
 
     public static void main(String[] args){
         userSession();

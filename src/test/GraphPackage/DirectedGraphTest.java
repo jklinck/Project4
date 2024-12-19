@@ -1,6 +1,7 @@
 package GraphPackage;
 
 import ADTPackage.LinkedStack;
+import ADTPackage.QueueInterface;
 import ADTPackage.StackInterface;
 import org.junit.jupiter.api.Test;
 

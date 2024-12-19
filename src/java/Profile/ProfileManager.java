@@ -1,6 +1,8 @@
 package Profile;
 
 import GraphPackage.UndirectedGraph;
+import ADTPackage.QueueInterface;
+import ADTPackage.LinkedQueue;
 import java.util.*;
 
 /**
@@ -39,6 +41,10 @@ public class ProfileManager {
      */
     public ArrayList<Profile> getFriendsArray(){
         return this.friendsArray;
+    }
+
+    public Profile getUser(Profile user){
+        return user;
     }
 
     /**
@@ -96,4 +102,40 @@ public class ProfileManager {
         friendsList.removeUser(user);
     }
 
+
+    public void displayAllProfilesBreadthFirst(Profile user){
+        /*
+        this is working with the getDepthFirstTraversal method, but for some
+        reason when I run it with the getBreadthFirstTraversal method it just
+        returns and empty queue (tested with isEmpty method)
+
+        I just figured it out, he purposely left the getBreadthFirstTraversal
+        method mostly empty, if you look it is only returning an empty
+        LinkedQueue, that is why it wasn't printing anything, he wants us to
+        write our own getBreadthFirstTraversal method
+
+         */
+        System.out.println("Coming from displayAllProfilesBreadthFirst");
+        QueueInterface<Profile> friendsQueue = friendsList.getDepthFirstTraversal(user);
+        Profile current = friendsQueue.getFront();
+
+        while(!friendsQueue.isEmpty()){
+            friendsQueue.dequeue();
+            displayMyFriends(current);
+            current = friendsQueue.getFront();
+        }
+    }
+
+    public void displayAllProfilesDepthFirst(Profile user){
+
+        QueueInterface<Profile> list = friendsList.getDepthFirstTraversal(user);
+
+        while(!list.isEmpty()){
+            System.out.println(list.dequeue().getName());
+        }
+    }
+
 }
+
+
+

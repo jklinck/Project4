@@ -104,10 +104,23 @@ public class DirectedGraph<T> implements GraphInterface<T>
 
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
-        resetVertices();
-        QueueInterface<T> traversalOrder = new LinkedQueue<>();               // Queue of vertex labels
+        resetVertices(); // sets all vertices to unvisited
+        QueueInterface<T> traversalOrder = new LinkedQueue<>();// Queue of vertex labels
 
+        VertexInterface<T> originVertex = vertices.getValue(origin);
+        originVertex.visit();
+        traversalOrder.enqueue(origin); // Enqueue vertex label
 
+        while(!traversalOrder.isEmpty()){
+            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
+            if(nextNeighbor != null){
+                traversalOrder.enqueue(nextNeighbor.getLabel());
+
+            }
+            else{
+                originVertex = originVertex.next();
+            }
+        }
         return traversalOrder;
     } // end getBreadthFirstTraversal
 
@@ -115,14 +128,19 @@ public class DirectedGraph<T> implements GraphInterface<T>
     public QueueInterface<T> getDepthFirstTraversal(T origin)
     {
         // Assumes graph is not empty
-        resetVertices();
+
+
+        resetVertices(); // sets all vertices to unvisited
         QueueInterface<T> traversalOrder = new LinkedQueue<T>();
         StackInterface<VertexInterface<T>> vertexStack = new LinkedStack<>();
 
+        /* this is retrieving the actual node, which is the value in the
+        key/value pair in the graph
+        */
         VertexInterface<T> originVertex = vertices.getValue(origin);
-        originVertex.visit();
-        traversalOrder.enqueue(origin); // Enqueue vertex label
-        vertexStack.push(originVertex); // Enqueue vertex
+        originVertex.visit(); // sets originVertex as visited
+        traversalOrder.enqueue(origin); // add the key of the node
+        vertexStack.push(originVertex); // add the node
 
         while (!vertexStack.isEmpty())
         {
