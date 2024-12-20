@@ -1,0 +1,10 @@
+Profile.java
+created getUserObject() method to return a Profile object
+
+ProfileManager.java
+changed friendsList field to friendsGraph for clarity
+created getUser() method so user can input a string and have a Profile object that matches
+    that name returned, this is used as a utility for the displayAllProfilesDepthFirst() and
+    displayAllProfilesBreadthFirst() methods
+created displayAllProfilesBreadthFirst() but it just prints out the object pointer
+created displayAllProfilesDepthFirst() but it just prints out the object pointer

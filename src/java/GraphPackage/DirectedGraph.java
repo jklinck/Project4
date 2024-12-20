@@ -1,6 +1,5 @@
 package GraphPackage;
 
-
 import ADTPackage.*;
 
 import java.util.Iterator;
@@ -15,6 +14,11 @@ public class DirectedGraph<T> implements GraphInterface<T>
         vertices = new UnsortedLinkedDictionary<>();
         edgeCount = 0;
     } // end default constructor
+
+    // I add this
+    public DictionaryInterface<T, VertexInterface<T>> getVertices(){
+        return this.vertices;
+    }
 
     /*
     we added this method so we could access the remove method
@@ -107,20 +111,20 @@ public class DirectedGraph<T> implements GraphInterface<T>
         resetVertices(); // sets all vertices to unvisited
         QueueInterface<T> traversalOrder = new LinkedQueue<>();// Queue of vertex labels
 
-        VertexInterface<T> originVertex = vertices.getValue(origin);
-        originVertex.visit();
-        traversalOrder.enqueue(origin); // Enqueue vertex label
-
-        while(!traversalOrder.isEmpty()){
-            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
-            if(nextNeighbor != null){
-                traversalOrder.enqueue(nextNeighbor.getLabel());
-
-            }
-            else{
-                originVertex = originVertex.next();
-            }
-        }
+//        VertexInterface<T> originVertex = vertices.getValue(origin);
+//        originVertex.visit();
+//        traversalOrder.enqueue(origin); // Enqueue vertex label
+//
+//        while(!traversalOrder.isEmpty()){
+//            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
+//            if(nextNeighbor != null){
+//                traversalOrder.enqueue(nextNeighbor.getLabel());
+//
+//            }
+//            else{
+//                originVertex = originVertex.next();
+//            }
+//        }
         return traversalOrder;
     } // end getBreadthFirstTraversal
 

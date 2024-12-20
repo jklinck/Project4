@@ -38,6 +38,10 @@ public class Profile {
         return this.name;
     }
 
+    public Profile getUserObject(){
+        return this;
+    }
+
     /**
      * Returns the users age
      * @return - int

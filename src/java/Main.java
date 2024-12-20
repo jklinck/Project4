@@ -3,6 +3,7 @@ import Profile.ProfileManager;
 import ADTPackage.LinkedQueue;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Main {
 
@@ -27,8 +28,6 @@ public class Main {
         Scanner in = new Scanner(System.in);
         // use this so you can switch users
         Profile admin = null;
-        Profile newProfile = null;
-        Profile newFriend = null;
         boolean logout = false;
         int selection = 0;
         String name = "";
@@ -44,25 +43,24 @@ public class Main {
             if(in.hasNextInt()){
                 selection = in.nextInt();
                 /*
-                check if user input is valid (a number between 1-9), if it
+                check if user input is valid (a number between 1-11), if it
                 is then continue with the program
                  */
-                if(selection >= 1 && selection <= 9){
-                    if(selection ==1){
+                if(selection >= 1 && selection <= 11){
+                    if(selection == 1){
                         // create profile
                         System.out.println("Please enter your name: ");
                         name = in.next();
                         System.out.println("Please enter your age: ");
                         age = in.nextInt();
-                        newProfile = new Profile(name, age);
+                        Profile newProfile = new Profile(name, age);
                         admin  = newProfile;
                         friendsList.addProfile(admin);
                         newProfile.displayProfile();
                     }
                     else if(selection == 2){
                         // view all profiles
-//                        friendsList.displayAllProfiles();
-                        friendsList.displayAllProfilesBreadthFirst(admin);
+                        friendsList.displayAllProfiles();
                     }
                     else if(selection == 3){
                         // add a friend
@@ -148,10 +146,10 @@ public class Main {
 
                     }
                     else if(selection == 8){
-                        breadth();
+//                        breadth();
                     }
                     else if(selection == 9){
-                        depth();
+//                        depth();
                     }
                     else if(selection == 10){
                         displayAll();
@@ -165,7 +163,7 @@ public class Main {
                     }
                 }
                 /*
-                if a user enters any other number than 1-9, then back up to the top of the loop
+                if a user enters any other number than 1-11, then back up to the top of the loop
                 to start again
                  */
                 else{
@@ -212,16 +210,13 @@ public class Main {
         return friendsList;
     }
 
-    public static void breadth(){
+    public static void breadth(Profile user){
         ProfileManager network = profileNetwork();
 
-//        network.displayAllProfilesBreadthFirst(John);
+//        network.displayAllProfilesBreadthFirst("John");
     }
 
-    public static void depth(){
-        ProfileManager network = profileNetwork();
-//        network.displayAllProfilesDepthFirst(John);
-    }
+
 
     public static void displayAll(){
         ProfileManager network = profileNetwork();
@@ -230,7 +225,9 @@ public class Main {
 
 
     public static void main(String[] args){
-        userSession();
+        ProfileManager network = profileNetwork();
+
+        network.displayAllProfilesDepthFirst("John");
     } // end main()
 } // end Main class
 

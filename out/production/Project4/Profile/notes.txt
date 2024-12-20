@@ -1,0 +1,83 @@
+Main
+in the depth method I am calling displayAllProfilesBreadthFirst from ProfileManager, my issue
+is that displayAllProfilesBreadthFirst takes a parameter of user of type Profile, when I pass a
+name it can't find it, so I need some way to have a getter in ProfileManager that can return a
+single user profile that matches the user Profile I am passing to displayAllProfilesBreadthFirst
+
+Maybe an iterator that would loop over the entire graph and return if(user == userImTryingToFind)
+would work, but the issue there is that ProfileManager would possibly need a new method in BasicGraph
+which would then potentially require a new method in UnsortedLinkedDictionary
+
+
+
+I'm paused on doing the task above and have altered the getUser method in ProfileManager to
+create an iterator to loop over the entire graph and then print out the user names with
+user.getName(), once I can do this I can loop and get back to the task above, I have gone through
+DirectedGraph and UnsortedLinkedDictionary and detailed what iterators they have an how they are
+being used
+
+ProfileManager has removeProfile() method which calls removeUser() from DirectedGraph which calls
+remove() from UndirectedGraph
+
+Maybe I can just create a custom Iterator in ProfileManager, then use it in getUser and iterate over the
+graph and find the user and then return the user object which can then be passed to the BFS and DFS methods
+
+I added getVertices in DirectedGraph
+
+----------------------------------------------------------------------------------------------------------
+DirectedGraph.java
+private fields:
+DictionaryInterface<T, VertexInterface<T>> vertices = new UnsortedLinkedDictionary<>()
+int edgeCount
+
+006    import java.util.Iterator;
+
+056    VertexInterface<T> beginVertex = vertices.getValue(begin);
+060    Iterator<VertexInterface<T>> neighbors = beginVertex.getNeighborIterator();
+
+095    Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
+
+183    QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>();
+194    VertexInterface<T> frontVertex = vertexQueue.dequeue();
+195    Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+
+244    EntryPQ frontEntry = priorityQueue.remove();
+245    VertexInterface<T> frontVertex = frontEntry.getVertex();
+257    Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+258    Iterator<Double> edgeWeights = frontVertex.getWeightIterator();
+
+----------------------------------------------------------------------------------------------------------
+Vertex.java
+private fields:
+T label
+ListWithIteratorInterface<Edge> edgeList = new LinkedListWithIterator<>(); // Edges to neighbors
+boolean visited;                          // True if visited
+VertexInterface<T> previousVertex;        // On path to this vertex
+double cost;                              // Of path to this vertex
+
+005    import ADTPackage.LinkedListWithIterator;
+006    import ADTPackage.ListWithIteratorInterface;
+
+014    private ListWithIteratorInterface<Edge> edgeList; // Edges to neighbors
+022    edgeList = new LinkedListWithIterator<>();
+079    private class WeightIterator implements Iterator<Double>
+113    public Iterator<Double> getWeightIterator()
+125    Iterator<VertexInterface<T>> neighbors = getNeighborIterator();
+150    public Iterator<VertexInterface<T>> getNeighborIterator(){return new NeighborIterator();}
+164    Iterator<VertexInterface<T>> neighbors = getNeighborIterator();
+192    private class NeighborIterator implements Iterator<VertexInterface<T>>
+
+----------------------------------------------------------------------------------------------------------
+UnsortedLinkedDictionary.java     there is a Node class inside of this class
+private fields:
+Node firstNode, int numberOfEntries
+
+003    import java.util.Iterator;
+
+126    public Iterator<K> getKeyIterator(){return new KeyIterator();}
+131    public Iterator<V> getValueIterator(){return new ValueIterator();}
+145    private class KeyIterator implements Iterator<K>
+182    private class ValueIterator implements Iterator<V>
+
+
+

@@ -14,7 +14,7 @@ import java.util.*;
 
 public class ProfileManager {
 
-   private UndirectedGraph<Profile> friendsList;
+   private UndirectedGraph<Profile> friendsGraph;
    private ArrayList<Profile> friendsArray;
 
     /**
@@ -22,8 +22,30 @@ public class ProfileManager {
      * of users and mirror that graph with an ArrayList
      */
     public ProfileManager(){
-      this.friendsList = new UndirectedGraph<>();
+      this.friendsGraph = new UndirectedGraph<>();
       this.friendsArray = new ArrayList<>();
+    }
+
+    /**
+     * Utility method for displayAllProfilesDepthFirst and displayAllProfilesBreadthFirst
+     * so a user can pass a name as a String and have it converted back into a Profile
+     * This is a good method but there is one glaring issue. What if there are two users
+     * with the same name. I'm going to leave this alone, but it could be corrected by
+     * adding a userID field into Profile since many users could have the same name but
+     * no user will have the same userID as another.
+     * @param name - String
+     * @return - Profile object
+     */
+    public Profile getUser(String name){
+        Profile returnedUser = null;
+        for(Profile user: friendsArray){
+            // if names match
+            if(user.getName().equals(name)){
+                returnedUser = user;
+                // make sure it is the same object
+            }
+        }
+        return returnedUser;
     }
 
     /**
@@ -31,7 +53,7 @@ public class ProfileManager {
      * @param user - Profile
      */
     public void addProfile(Profile user){
-        friendsList.addVertex(user);
+        friendsGraph.addVertex(user);
         friendsArray.add(user);
     }
 
@@ -43,10 +65,6 @@ public class ProfileManager {
         return this.friendsArray;
     }
 
-    public Profile getUser(Profile user){
-        return user;
-    }
-
     /**
      * Allows a user to connect themselves to other users (create a friendship)
      * @param user1 - Profile
@@ -54,7 +72,7 @@ public class ProfileManager {
      */
     public void connectFriends(Profile user1, Profile user2){
         // using addEdge from GraphPackage.DirectedGraph.java
-        friendsList.addEdge(user1, user2);
+        friendsGraph.addEdge(user1, user2);
         user1.addFriend(user2);
         user2.addFriend(user1);
     }
@@ -99,40 +117,29 @@ public class ProfileManager {
         access the remove method in UnsortedLinkedDictionary since the graph being
         created inside of
          */
-        friendsList.removeUser(user);
+        friendsGraph.removeUser(user);
+    }
+
+    /**
+     * Utility method for calling getBreadthFirstTraversal() from DirectedGraph but
+     * passing a String instead of a Profile object.
+     * @param name - String
+     */
+    public void displayAllProfilesBreadthFirst(String name){
+        Profile user = this.getUser(name);
+        System.out.println(friendsGraph.getBreadthFirstTraversal(user));
     }
 
 
-    public void displayAllProfilesBreadthFirst(Profile user){
-        /*
-        this is working with the getDepthFirstTraversal method, but for some
-        reason when I run it with the getBreadthFirstTraversal method it just
-        returns and empty queue (tested with isEmpty method)
 
-        I just figured it out, he purposely left the getBreadthFirstTraversal
-        method mostly empty, if you look it is only returning an empty
-        LinkedQueue, that is why it wasn't printing anything, he wants us to
-        write our own getBreadthFirstTraversal method
-
-         */
-        System.out.println("Coming from displayAllProfilesBreadthFirst");
-        QueueInterface<Profile> friendsQueue = friendsList.getDepthFirstTraversal(user);
-        Profile current = friendsQueue.getFront();
-
-        while(!friendsQueue.isEmpty()){
-            friendsQueue.dequeue();
-            displayMyFriends(current);
-            current = friendsQueue.getFront();
-        }
-    }
-
-    public void displayAllProfilesDepthFirst(Profile user){
-
-        QueueInterface<Profile> list = friendsList.getDepthFirstTraversal(user);
-
-        while(!list.isEmpty()){
-            System.out.println(list.dequeue().getName());
-        }
+    /**
+     * Utility method for calling getDepthFirstTraversal() from DirectedGraph but
+     * passing a String instead of a Profile object.
+     * @param name - String
+     */
+    public void displayAllProfilesDepthFirst(String name){
+        Profile user = this.getUser(name);
+        System.out.println(friendsGraph.getDepthFirstTraversal(user));
     }
 
 }
