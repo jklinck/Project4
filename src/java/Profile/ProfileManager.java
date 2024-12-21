@@ -28,7 +28,7 @@ public class ProfileManager {
 
     /**
      * Utility method for displayAllProfilesDepthFirst and displayAllProfilesBreadthFirst
-     * so a user can pass a name as a String and have it converted back into a Profile
+     * so a user can pass a name as a String and have it converted back into a Profile object.
      * This is a good method but there is one glaring issue. What if there are two users
      * with the same name. I'm going to leave this alone, but it could be corrected by
      * adding a userID field into Profile since many users could have the same name but
@@ -42,7 +42,6 @@ public class ProfileManager {
             // if names match
             if(user.getName().equals(name)){
                 returnedUser = user;
-                // make sure it is the same object
             }
         }
         return returnedUser;
@@ -127,10 +126,11 @@ public class ProfileManager {
      */
     public void displayAllProfilesBreadthFirst(String name){
         Profile user = this.getUser(name);
-        System.out.println(friendsGraph.getBreadthFirstTraversal(user));
+        QueueInterface<Profile> userQueue = friendsGraph.getBreadthFirstTraversal(user);
+        while(!userQueue.isEmpty()){
+            System.out.println(userQueue.dequeue().getName());
+        }
     }
-
-
 
     /**
      * Utility method for calling getDepthFirstTraversal() from DirectedGraph but
@@ -139,7 +139,10 @@ public class ProfileManager {
      */
     public void displayAllProfilesDepthFirst(String name){
         Profile user = this.getUser(name);
-        System.out.println(friendsGraph.getDepthFirstTraversal(user));
+        QueueInterface<Profile> userQueue = friendsGraph.getDepthFirstTraversal(user);
+        while(!userQueue.isEmpty()){
+            System.out.println(userQueue.dequeue().getName());
+        }
     }
 
 }

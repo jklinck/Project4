@@ -10,11 +10,13 @@ public class LinkedQueue<T> implements QueueInterface<T>
 {
    private Node firstNode; // references node at front of queue
    private Node lastNode;  // references node at back of queue
+   private int size;
 
    public LinkedQueue()
    {
       firstNode = null;
       lastNode = null;
+      size = 0;
    } // end default constructor
 
    /**
@@ -30,8 +32,16 @@ public class LinkedQueue<T> implements QueueInterface<T>
       else
          lastNode.setNextNode(newNode);
 
+      size++;
       lastNode = newNode;
    } // end enqueue
+
+   /**
+    * Returns size of LinkedQueue
+    */
+   public int getSize(){
+      return this.size;
+   }
 
    /**
     * Returns first node but does not remove it.

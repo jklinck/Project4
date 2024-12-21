@@ -11,6 +11,12 @@ public interface QueueInterface<T>
    @param newEntry  an object to be added */
   public void enqueue(T newEntry);
 
+  /**
+   * Returns size of Queue
+   * @return size
+   */
+  public int getSize();
+
   /** Removes and returns the entry at the front of this queue.
    @return either the object at the front of the queue or, if the
    queue is empty before the operation, null */

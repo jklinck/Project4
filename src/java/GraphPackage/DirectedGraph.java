@@ -108,23 +108,33 @@ public class DirectedGraph<T> implements GraphInterface<T>
 
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
+        Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
         resetVertices(); // sets all vertices to unvisited
         QueueInterface<T> traversalOrder = new LinkedQueue<>();// Queue of vertex labels
 
-//        VertexInterface<T> originVertex = vertices.getValue(origin);
-//        originVertex.visit();
-//        traversalOrder.enqueue(origin); // Enqueue vertex label
-//
-//        while(!traversalOrder.isEmpty()){
-//            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
-//            if(nextNeighbor != null){
-//                traversalOrder.enqueue(nextNeighbor.getLabel());
-//
-//            }
+        VertexInterface<T> originVertex = vertices.getValue(origin);
+        originVertex.visit();
+        traversalOrder.enqueue(origin); // Enqueue vertex label
+
+//        while(vertexIterator.hasNext()){
+        while(traversalOrder.getSize() != getNumberOfVertices()){
+            VertexInterface<T> nextNeighbor = originVertex.getUnvisitedNeighbor();
+
+            if (nextNeighbor != null)
+            {
+                nextNeighbor.visit();
+                traversalOrder.enqueue(nextNeighbor.getLabel());
+            }
+            else{
+                originVertex = vertexIterator.next();
+                if(originVertex == null){
+                    break;
+                }
+            }
 //            else{
-//                originVertex = originVertex.next();
+//                break;
 //            }
-//        }
+        }
         return traversalOrder;
     } // end getBreadthFirstTraversal
 

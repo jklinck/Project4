@@ -146,13 +146,14 @@ public class Main {
 
                     }
                     else if(selection == 8){
-//                        breadth();
+//                        friendsList.displayAllProfilesBreadthFirst(admin);
                     }
                     else if(selection == 9){
-//                        depth();
+//                        friendsList.displayAllProfilesDepthFirst(admin);
                     }
                     else if(selection == 10){
-                        displayAll();
+//                        displayAll();
+                        friendsList.displayAllProfiles();
                     }
                     else if(selection == 11){
                         System.out.println("You have successfully logged out.");
@@ -210,14 +211,6 @@ public class Main {
         return friendsList;
     }
 
-    public static void breadth(Profile user){
-        ProfileManager network = profileNetwork();
-
-//        network.displayAllProfilesBreadthFirst("John");
-    }
-
-
-
     public static void displayAll(){
         ProfileManager network = profileNetwork();
         network.displayAllProfiles();
@@ -225,9 +218,9 @@ public class Main {
 
 
     public static void main(String[] args){
-        ProfileManager network = profileNetwork();
-
-        network.displayAllProfilesDepthFirst("John");
+//        ProfileManager network = profileNetwork();
+//        network.displayAllProfilesBreadthFirst("John");
+        userSession();
     } // end main()
 } // end Main class
 
