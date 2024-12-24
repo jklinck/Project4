@@ -124,11 +124,12 @@ public class ProfileManager {
      * passing a String instead of a Profile object.
      * @param name - String
      */
-    public void displayAllProfilesBreadthFirst(String name){
-        Profile user = this.getUser(name);
+    public void displayAllProfilesBreadthFirst(Profile user){
         QueueInterface<Profile> userQueue = friendsGraph.getBreadthFirstTraversal(user);
         while(!userQueue.isEmpty()){
-            System.out.println(userQueue.dequeue().getName());
+            String name = userQueue.getFront().getName();
+            System.out.println(name);
+            userQueue.dequeue();
         }
     }
 

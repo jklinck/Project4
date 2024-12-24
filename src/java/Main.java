@@ -23,8 +23,8 @@ public class Main {
     }
 
     public static void userSession(){
-        ProfileManager friendsList = new ProfileManager();
-        ArrayList<Profile> friendsArray = friendsList.getFriendsArray();
+        ProfileManager friendsGraph = new ProfileManager();
+        ArrayList<Profile> friendsArray = friendsGraph.getFriendsArray();
         Scanner in = new Scanner(System.in);
         // use this so you can switch users
         Profile admin = null;
@@ -55,12 +55,14 @@ public class Main {
                         age = in.nextInt();
                         Profile newProfile = new Profile(name, age);
                         admin  = newProfile;
-                        friendsList.addProfile(admin);
+                        friendsGraph.addProfile(admin);
                         newProfile.displayProfile();
                     }
                     else if(selection == 2){
                         // view all profiles
-                        friendsList.displayAllProfiles();
+//                        friendsGraph.displayAllProfiles();
+                        // display all profiles via breadth first traversal
+                        friendsGraph.displayAllProfilesBreadthFirst(admin);
                     }
                     else if(selection == 3){
                         // add a friend
@@ -70,8 +72,7 @@ public class Main {
                             boolean userFound = false;
                             for(Profile user: friendsArray){
                                 if(user.getName().equals(name)){
-                                    admin.addFriend(user);
-                                    user.addFriend(admin);
+                                    friendsGraph.connectFriends(admin, user);
                                     userFound = true;
                                     break;
                                 }
@@ -87,7 +88,7 @@ public class Main {
                     else if(selection == 4){
                         // view your friends list
                         if(admin != null) {
-                            friendsList.displayMyFriends(admin);
+                            friendsGraph.displayMyFriends(admin);
                         }
                         else{
                             System.out.println("You must first create a profile before you can print your friends.");
@@ -101,7 +102,7 @@ public class Main {
                         boolean userFound = false;
                         for(Profile user: friendsArray){
                             if(user.getName().equals(name)){
-                                friendsList.removeProfile(user);
+                                friendsGraph.removeProfile(user);
                                 userFound = true;
                                 break;
                             }
@@ -117,7 +118,7 @@ public class Main {
                         System.out.println("Please enter their age: ");
                         age = in.nextInt();
                         Profile addProfile = new Profile(name, age);
-                        friendsList.addProfile(addProfile);
+                        friendsGraph.addProfile(addProfile);
                         /*
                         if user did not create a profile upon starting the session then
                         this will assign admin to the user being created in this step, I did
@@ -146,14 +147,13 @@ public class Main {
 
                     }
                     else if(selection == 8){
-//                        friendsList.displayAllProfilesBreadthFirst(admin);
+//                        friendsGraph.displayAllProfilesBreadthFirst(admin);
                     }
                     else if(selection == 9){
-//                        friendsList.displayAllProfilesDepthFirst(admin);
+//                        friendsGraph.displayAllProfilesDepthFirst(admin);
                     }
                     else if(selection == 10){
-//                        displayAll();
-                        friendsList.displayAllProfiles();
+                        friendsGraph.displayAllProfiles();
                     }
                     else if(selection == 11){
                         System.out.println("You have successfully logged out.");
@@ -185,7 +185,7 @@ public class Main {
     } // end userSession()
 
     public static ProfileManager profileNetwork(){
-        ProfileManager friendsList = new ProfileManager();
+        ProfileManager friendsGraph = new ProfileManager();
         Profile John = new Profile("John", 30);
         Profile Amy = new Profile("Amy", 25);
 
@@ -194,21 +194,21 @@ public class Main {
         Profile James = new Profile("James", 35);
         Profile Dave = new Profile("Dave", 19);
 
-        friendsList.addProfile(John);
-        friendsList.addProfile(Amy);
-        friendsList.addProfile(Alex);
-        friendsList.addProfile(Steve);
-        friendsList.addProfile(James);
-        friendsList.addProfile(Dave);
+        friendsGraph.addProfile(John);
+        friendsGraph.addProfile(Amy);
+        friendsGraph.addProfile(Alex);
+        friendsGraph.addProfile(Steve);
+        friendsGraph.addProfile(James);
+        friendsGraph.addProfile(Dave);
 
-        friendsList.connectFriends(John, Steve);
-        friendsList.connectFriends(John, Amy);
-        friendsList.connectFriends(John, Alex);
-        friendsList.connectFriends(Steve, James);
-        friendsList.connectFriends(Amy, Dave);
-        friendsList.connectFriends(Dave, James);
+        friendsGraph.connectFriends(John, Steve);
+        friendsGraph.connectFriends(John, Amy);
+        friendsGraph.connectFriends(John, Alex);
+        friendsGraph.connectFriends(Steve, James);
+        friendsGraph.connectFriends(Amy, Dave);
+        friendsGraph.connectFriends(Dave, James);
 
-        return friendsList;
+        return friendsGraph;
     }
 
     public static void displayAll(){

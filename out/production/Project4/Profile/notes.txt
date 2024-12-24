@@ -1,26 +1,8 @@
-Profile.java
-created getUserObject() method to return a Profile object
+The issue with calling breadFirstTraversal when selection == 2 is that when
+two users are connected in selection == 3 is only connecting the users inside
+the friendsArray and not adding them to the graph. I need to alter addFriends in
+Profile.java so it calls connectFriends from ProfileManager. That way the two
+Profiles will be connected in the graph.
 
-ProfileManager.java
-changed friendsList field to friendsGraph for clarity
-created getUser() method so user can input a string and have a Profile object that matches
-    that name returned, this is used as a utility for the displayAllProfilesDepthFirst() and
-    displayAllProfilesBreadthFirst() methods
-created displayAllProfilesDepthFirst()
-created displayAllProfilesBreadthFirst()
-
-one idea on how to deal with the loop in BFS is to loop until the queue is the same size
-as the initial graph, that way you know you have enqueued all vertices from the graph into
-the queue
-
-LinkedQueue.java
-added getSize
-
-QueueInterface.java
-added getSize
-
-
-GOALS
-finish breadthFirstTraversal in DirectedGraph
-study tests and get the display tests working
-learn how to do UML
+Maybe the addFriend method in Profile.java should have three parameters (ProfileManager, Profile, Profile)
+ProfileManager is the graph and then two Profile objects that are the friends being connected.
