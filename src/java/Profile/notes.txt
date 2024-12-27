@@ -1,8 +1,12 @@
-The issue with calling breadFirstTraversal when selection == 2 is that when
-two users are connected in selection == 3 is only connecting the users inside
-the friendsArray and not adding them to the graph. I need to alter addFriends in
-Profile.java so it calls connectFriends from ProfileManager. That way the two
-Profiles will be connected in the graph.
+Here are the methods I have added to the data structures that came with the project.
 
-Maybe the addFriend method in Profile.java should have three parameters (ProfileManager, Profile, Profile)
-ProfileManager is the graph and then two Profile objects that are the friends being connected.
+DirectedGraph
+removeUser
+
+Methods I didn't end up needing
+
+Profile - getUserObject
+ProfileManager - getUser
+Main - displayAll
+
+I removed some unused imports but didn't remove the linkedQueue.java from ProfileManager.java
